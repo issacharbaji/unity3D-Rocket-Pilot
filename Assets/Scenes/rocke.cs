@@ -12,7 +12,9 @@ public class rocke : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource audioSource;
-    
+
+    enum State {Alive, Dying, Transcending};
+    State state= State.Alive;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +26,12 @@ public class rocke : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if(state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
+
     }
     private void Thrust()
     {
@@ -62,21 +68,36 @@ public class rocke : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if ( state != State.Alive) // ignore collision when dead
+        {
+            return;
+        }
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
                 //do nothing
-                print("Ok");
+                
                 break;
             case "Finish":
-                print("Hit Finish");
-                SceneManager.LoadScene(1);
+                state = State.Transcending;
+                Invoke("LoadNextLevel",1f);
                 break;
             default:
-                print("Dead");
-                SceneManager.LoadScene(0);
+                state = State.Dying;
+                Invoke("LoadFirstLevel", 1f);  
                 break;
 
         }
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }
