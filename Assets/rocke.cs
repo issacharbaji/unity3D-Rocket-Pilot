@@ -59,5 +59,21 @@ public class rocke : MonoBehaviour
         rigidBody.freezeRotation = false; //physics control of rotation
     }
 
-   
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                //do nothing
+                print("Ok");
+                break;
+            case "Fuel":
+                print("Fuel");
+                break;
+            default:
+                print("Dead");
+                break;
+
+        }
+    }
 }
