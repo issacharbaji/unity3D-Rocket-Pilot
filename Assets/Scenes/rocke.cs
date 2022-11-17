@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class rocke : MonoBehaviour
 {   
-    [SerializeField] float rcsthrust = 100f;
+    [SerializeField] float rcsthrust = 150f;
     [SerializeField] float mainthrust = 10f;
 
     Rigidbody rigidBody;
@@ -67,11 +68,13 @@ public class rocke : MonoBehaviour
                 //do nothing
                 print("Ok");
                 break;
-            case "Fuel":
-                print("Fuel");
+            case "Finish":
+                print("Hit Finish");
+                SceneManager.LoadScene(1);
                 break;
             default:
                 print("Dead");
+                SceneManager.LoadScene(0);
                 break;
 
         }
