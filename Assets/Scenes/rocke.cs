@@ -13,6 +13,10 @@ public class rocke : MonoBehaviour
     [SerializeField] AudioClip success;
     [SerializeField] AudioClip death;
 
+    [SerializeField] ParticleSystem mainEngineParitcles;
+    [SerializeField] ParticleSystem successParitcles;
+    [SerializeField] ParticleSystem deathParitcles;
+
     Rigidbody rigidBody;
     AudioSource audioSource;
 
@@ -46,6 +50,7 @@ public class rocke : MonoBehaviour
         else
         {
             audioSource.Stop();
+            mainEngineParitcles.Stop();
         }
     }
 
@@ -55,7 +60,9 @@ public class rocke : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
+            
         }
+        mainEngineParitcles.Play();
     }
 
     private void RespondToRotateInput()
@@ -92,12 +99,14 @@ public class rocke : MonoBehaviour
                 state = State.Transcending;
                 audioSource.Stop();
                 audioSource.PlayOneShot(success);
+                successParitcles.Play();
                 Invoke("LoadNextLevel",1f);
                 break;
             default:
                 state = State.Dying;
                 audioSource.Stop();
                 audioSource.PlayOneShot(death);
+                deathParitcles.Play();
                 Invoke("LoadFirstLevel", 1f);  
                 break;
 
