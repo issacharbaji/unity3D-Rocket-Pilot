@@ -12,6 +12,7 @@ public class rocke : MonoBehaviour
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip success;
     [SerializeField] AudioClip death;
+    [SerializeField] float levelLowDelay = 2f;
 
     [SerializeField] ParticleSystem mainEngineParitcles;
     [SerializeField] ParticleSystem successParitcles;
@@ -56,7 +57,7 @@ public class rocke : MonoBehaviour
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainthrust);
+        rigidBody.AddRelativeForce(Vector3.up * mainthrust * Time.deltaTime);
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
@@ -100,14 +101,14 @@ public class rocke : MonoBehaviour
                 audioSource.Stop();
                 audioSource.PlayOneShot(success);
                 successParitcles.Play();
-                Invoke("LoadNextLevel",1f);
+                Invoke("LoadNextLevel",levelLowDelay);
                 break;
             default:
                 state = State.Dying;
                 audioSource.Stop();
                 audioSource.PlayOneShot(death);
                 deathParitcles.Play();
-                Invoke("LoadFirstLevel", 1f);  
+                Invoke("LoadFirstLevel", levelLowDelay);  
                 break;
 
         }
