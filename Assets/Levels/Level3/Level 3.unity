@@ -1437,6 +1437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a762fb9844945749bd32b582b3b45c9, type: 3}
+--- !u!1 &1434836177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4133801499835819972, guid: 8a762fb9844945749bd32b582b3b45c9, type: 3}
+  m_PrefabInstance: {fileID: 973387295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1505127031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1575,6 +1580,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e1ae80fbce487c498bca3f4c56f6f30, type: 3}
+--- !u!1 &1543879022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8300335377766222519, guid: 9e1ae80fbce487c498bca3f4c56f6f30, type: 3}
+  m_PrefabInstance: {fileID: 1514371522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1543879026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543879022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b247d748e558a7e40bc4b01c3dd1a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 0, z: 10}
+  period: 2
+  movementFactor: 0
 --- !u!1001 &1547436126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1682,6 +1707,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3501342956415583895, guid: 8a762fb9844945749bd32b582b3b45c9, type: 3}
   m_PrefabInstance: {fileID: 973387295}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1975624405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434836177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b247d748e558a7e40bc4b01c3dd1a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 10, z: 0}
+  period: 4
+  movementFactor: 0
 --- !u!1 &2050777437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b247d748e558a7e40bc4b01c3dd1a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 10, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 10}
   period: 4
   movementFactor: 0
 --- !u!1001 &1803870428630422158
