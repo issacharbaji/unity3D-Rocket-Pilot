@@ -23,7 +23,7 @@ public class oscillator : MonoBehaviour
     void Update()
     {
         // set movement vector
-        if(period == 0) { return; }
+        if(period <= Mathf.Epsilon) { return; }
         float cycles = Time.time / period; // grows contnually from 0
         const float tau = Mathf.PI * 2;
         float rawSinWave = Mathf.Sin(cycles * tau);

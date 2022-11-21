@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class rocke : MonoBehaviour
 {   
-    [SerializeField] float rcsthrust = 150f;
+    [SerializeField] float rcsthrust = 100f;
     [SerializeField] float mainthrust = 10f;
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip success;
@@ -57,7 +57,7 @@ public class rocke : MonoBehaviour
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainthrust * Time.deltaTime);
+        rigidBody.AddRelativeForce(Vector3.up * mainthrust);
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
