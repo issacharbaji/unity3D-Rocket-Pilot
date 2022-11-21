@@ -24,6 +24,8 @@ public class rocke : MonoBehaviour
     enum State {Alive, Dying, Transcending};
     State state= State.Alive;
 
+    bool collisionsDisable = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +41,23 @@ public class rocke : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+        RespondToDebugKeys();
 
     }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            // toggle colligion
+            collisionsDisable = !collisionsDisable ;
+        }
+    }
+
     private void RespondToThrustInput()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -85,7 +102,7 @@ public class rocke : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if ( state != State.Alive) // ignore collision when dead
+        if ( state != State.Alive || collisionsDisable) // ignore collision when dead
         {
             return;
         }
@@ -116,7 +133,10 @@ public class rocke : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if( nextSceneIndex == SceneManager.sceneCountInBuildSettings) { nextSceneIndex= 0; }
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     private void LoadFirstLevel()
